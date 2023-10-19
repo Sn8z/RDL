@@ -13,17 +13,20 @@ end)
 
 local function updateCounter()
 	RdlDB.deaths = RdlDB.deaths + 1
-	deathCounter:SetText(RdlDB.deaths)
+	deathCounter:SetText(tostring(RdlDB.deaths))
 	RdlDB.last = date("%m/%d/%y %H:%M:%S")
 	PlaySound(9036)
+	SendChatMessage("LUL, du har nu dött" .. " " .. RdlDB.deaths .. " " .. "gånger med mig.", "WHISPER", "Common", "Drakbrink")
 	print("Robin |cffff0000 died|r.")
 end
 
 function rdlFrame:OnEvent(event, ...)
 	local timestamp, subevent, hideCaster, sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags = ...
 
-	if subevent == "UNIT_DIED" and destName == "Drakbrink" then
-		updateCounter()
+	if subevent == "UNIT_DIED" then
+		if destName == "Drakbrink" then
+			updateCounter()
+		end
 	end
 end
 
@@ -35,7 +38,6 @@ dbFrame:SetScript("OnEvent", function(self, event, arg1)
 		RdlDB = RdlDB or {}
 		RdlDB.deaths = RdlDB.deaths or 0
 		RdlDB.last = RdlDB.last or "aldrig"
-
 		deathCounter:SetText(tostring(RdlDB.deaths))
 		print("|cffff0000 RDL|r loaded.")
 	end
