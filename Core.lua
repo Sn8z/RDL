@@ -16,7 +16,7 @@ local function updateCounter()
 	deathCounter:SetText(tostring(RdlDB.deaths))
 	RdlDB.last = date("%m/%d/%y %H:%M:%S")
 	PlaySound(9036)
-	SendChatMessage("LUL, du har nu dött" .. " " .. RdlDB.deaths .. " " .. "gånger med mig.", "WHISPER", "Common", "Drakbrink")
+	SendChatMessage(rDL:getRandomPhrase(), "WHISPER", "Common", "Drakbrink")
 	print("Robin |cffff0000 died|r.")
 end
 

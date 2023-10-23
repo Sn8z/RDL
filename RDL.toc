@@ -6,3 +6,4 @@
 ## SavedVariables: RdlDB
 
 Core.lua
+phrases.lua
