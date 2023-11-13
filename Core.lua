@@ -7,7 +7,7 @@ local characters = {
 
 -- Death Counter Text
 local deathCounter = UIParent:CreateFontString("RdlCounterText", "BACKGROUND", "GameTooltipText")
-deathCounter:SetPoint("BOTTOM", UIParent, "BOTTOM", 450, 5)
+deathCounter:SetPoint("BOTTOM", UIParent, "BOTTOM", 0, 5)
 
 -- Event frame
 local rdlFrame = CreateFrame("Frame")
