@@ -1,5 +1,5 @@
-## Interface: 100107
-## Version: 1.0.0
+## Interface: 100200
+## Version: 1.1.0
 ## Title: Robin Death Log
 ## Notes: Robin Death Log counts the number of deaths for my friend Robin
 ## Author: Sn8z

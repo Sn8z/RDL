@@ -1,8 +1,13 @@
 local addonName, rDL = ...
 
+local characters = {
+	["Drakbrink"] = true,
+	["Brinkentosh"] = true
+}
+
 -- Death Counter Text
 local deathCounter = UIParent:CreateFontString("RdlCounterText", "BACKGROUND", "GameTooltipText")
-deathCounter:SetPoint("TOP", UIParent, "TOP", 0, -5)
+deathCounter:SetPoint("BOTTOM", UIParent, "BOTTOM", 450, 5)
 
 -- Event frame
 local rdlFrame = CreateFrame("Frame")
@@ -11,12 +16,12 @@ rdlFrame:SetScript("OnEvent", function(self, event)
 	self:OnEvent(event, CombatLogGetCurrentEventInfo())
 end)
 
-local function updateCounter()
+local function updateCounter(name)
 	RdlDB.deaths = RdlDB.deaths + 1
 	deathCounter:SetText(tostring(RdlDB.deaths))
 	RdlDB.last = date("%m/%d/%y %H:%M:%S")
 	PlaySound(9036)
-	SendChatMessage(rDL:getRandomPhrase(), "WHISPER", "Common", "Drakbrink")
+	SendChatMessage(rDL:getRandomPhrase(), "WHISPER", "Common", name)
 	print("Robin |cffff0000 died|r.")
 end
 
@@ -24,8 +29,8 @@ function rdlFrame:OnEvent(event, ...)
 	local timestamp, subevent, hideCaster, sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags = ...
 
 	if subevent == "UNIT_DIED" then
-		if destName == "Drakbrink" then
-			updateCounter()
+		if characters[destName] then
+			updateCounter(destName)
 		end
 	end
 end
