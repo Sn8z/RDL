@@ -2,6 +2,7 @@ local addonName, rDL = ...
 
 local characters = {
 	["Drakbrink"] = true,
+	["Sprättarn"] = true,
 	["Brinkentosh"] = true
 }
 
