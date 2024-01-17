@@ -1,4 +1,4 @@
-## Interface: 100200
+## Interface: 100205
 ## Version: 1.1.0
 ## Title: Robin Death Log
 ## Notes: Robin Death Log counts the number of deaths for my friend Robin
